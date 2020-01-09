@@ -79,6 +79,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Laravel-admin install directory_api
+    |--------------------------------------------------------------------------
+    |
+    | The installation directory_api of the controller and routing configuration
+    | files of the administration page. The default is `app/Api`, which must
+    | be set before running `artisan admin::install` to take effect.
+    |
+    */
+    'directory_api' => app_path('Api'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Laravel-admin html title
     |--------------------------------------------------------------------------
     |

@@ -15,6 +15,9 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191); //add fixed sql
+        if (file_exists($routes = api_path('routes.php'))) {
+            $this->loadRoutesFrom($routes);
+        }
     }
 
     /**

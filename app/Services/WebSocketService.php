@@ -29,40 +29,35 @@ class WebSocketService implements WebSocketHandlerInterface
         session()->setId($sessionId);//赋值sessionid
         session()->start();//开启session
         $userId = session('chat_user')->user_id;//获取session中信息
-       // var_dump(session('chat_user'));
-        //var_dump($userId);
+
         $this->wsTable->set('uid:' . $userId, ['value' => $request->fd]);// 绑定uid到fd的映射
         $this->wsTable->set('fd:' . $request->fd, ['value' => $userId]);// 绑定fd到uid的映射
-        var_dump($this->wsTable->get('uid:' . $userId));
+
         //$server->push($request->fd, "Welcome to LaravelS #{$request->fd}");
         // throw new \Exception('an exception');// 此时抛出的异常上层会忽略，并记录到Swoole日志，需要开发者try/catch捕获处理
     }
     public function onMessage(Server $server, Frame $frame)
     {
 
-       // var_dump(json_decode($frame->data,true));
         if (!empty($frame->data)) {
             $res = json_decode($frame->data,true);
         } else {
             $res['type'] = null;
         }
-        var_dump($this->sessionid);
+
         session()->setId($this->sessionid);//赋值sessionid
         session()->start();//开启session
         $userId = session('chat_user')->user_id;//获取session中信息
         switch ($res['type']) {
             case 'ping':
                 $fd = $this->wsTable->get('uid:' . $userId);
-                var_dump($fd);
                 $data = [
                     'type' => 'ping',
                     'data' => ''
                 ];
-               // var_dump($data);
                 $server->push($fd['value'], json_encode($data));
                 break;
             case 'chatMessage':
-                var_dump($res);
                 //
                 if ($res['data']['mine']['id'] == $res['data']['to']['id']) {
                     return false;

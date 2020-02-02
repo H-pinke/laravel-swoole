@@ -11,22 +11,23 @@
 |
 */
 use Illuminate\Routing\Router;
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/login', 'DocController@index');
-
-//Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware('auth');
-
-
-
-Route::group([
-    'middleware'    => config('admin.route.middleware'),
-], function (Router $router) {
-
-    $router->get('admin/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-    $router->get('doc', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-
-
-
-});
+//var_dump(session('chat_user'));
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+////Route::get('/login', 'DocController@index');
+//
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+//
+//
+//
+//Route::group([
+//    'middleware'    => config('admin.route.middleware'),
+//], function (Router $router) {
+//
+//    $router->get('admin/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+//    $router->get('doc', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+//
+//
+//
+//});

@@ -10,20 +10,19 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * 与模型关联的数据表
      *
-     * @var array
+     * @var string
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $table = 'user';
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function friends()
+    {
+        return $this->hasOne('App\Model\Friend','friend_id', 'id');
+    }
+
+    public function groupMember() {
+        return $this->hasOne('App\Model\GroupMember','user_id', 'id');
+    }
+
 }

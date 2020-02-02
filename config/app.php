@@ -173,6 +173,8 @@ return [
          * Package Service Providers...
          */
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Hhxsv5\LaravelS\Illuminate\LaravelSServiceProvider::class,
+        App\Modules\ServiceProvider::class,
 
         /*
          * Application Service Providers...

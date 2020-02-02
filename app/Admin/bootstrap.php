@@ -19,3 +19,6 @@
  */
 
 Encore\Admin\Form::forget(['map', 'editor']);
+
+app('view')->prependNamespace('admin', admin_path().'/Views/admin');
+

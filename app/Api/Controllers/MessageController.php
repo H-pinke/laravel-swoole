@@ -2,6 +2,7 @@
 namespace App\Api\Controllers;
 use App\Api\Controllers\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\File\UploadedFile as SymfonyUploadedFile;
 use Validator;
 
@@ -86,7 +87,7 @@ class MessageController extends BaseController
 //            'id' => 'required',
 //        ],['test']);
         //$validator = Validator::make($request, config('rule.api.getmsg'), $messages);
-        $this->validateRequest(config('rule.api.getmsg'), $request, $messages);
+      //  $this->validateRequest(config('rule.api.getmsg'), $request, $messages);
 
         //验证,参数错误,返回520错误
       //  $this->validateRequest(config('rule.api.getmsg'), $request, $messages);
@@ -94,6 +95,7 @@ class MessageController extends BaseController
        // $result = $this->getService();
         //var_dump($result->getMessage(8));die;
         $result = $this->getService()->getMessage($request->input('request_id'));
+        dd($result);
         return $this->response($request, [
             'data' => $result,
         ]);

@@ -58,5 +58,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'api_logger' => \App\Common\Middleware\ApiLogger::class,
+        'chat_login' => \App\Common\Middleware\ChatLogin::class,
     ];
 }

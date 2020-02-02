@@ -16,10 +16,10 @@ use Illuminate\Http\Request;
 abstract class Controller extends BaseController
 {
     public function __construct() {
-       // var_dump('ddd');die;
        // parent::__construct();
         //$this->middleware('api_agent_authenticated');
         $this->middleware('api_logger');
+       // $this->middleware('throttle');
 //        $this->middleware('api_rate_limit');
         //$this->middleware('before_auto_trimmer');
     }

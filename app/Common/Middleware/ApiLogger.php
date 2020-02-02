@@ -57,13 +57,13 @@ class ApiLogger
         $requestCode = str_random(16);
         $input = '';
         foreach($request->input() as $key=>$value){
-            $input .= $key . '=' . urldecode($value) . "/r/n";
+            $input .= $key . '=' . urldecode($value) . PHP_EOL;
         }
-        $this->logger->info(sprintf('REQ: %s %s %s' . "/r/n" . '%s' . "/r/n" . '%s', $requestCode.'2222', $request->getMethod(), $request->decodedPath(), $request, $input));
+        $this->logger->info(sprintf('REQ: %s %s %s' . PHP_EOL . '%s' . PHP_EOL . '%s', $requestCode, $request->getMethod(), $request->decodedPath(), $request, $input));
         try{
             $response = $next($request);
             $this->logger->info(
-                sprintf('RES: %s %s %s' . "/r/n" . '%s', $requestCode, $response->getStatusCode(), Response::$statusTexts[$response->getStatusCode()], $response)
+                sprintf('RES: %s %s %s' . PHP_EOL . '%s', $requestCode, $response->getStatusCode(), Response::$statusTexts[$response->getStatusCode()], $response)
             );
             return $response;
         }catch (\Exception $exception){

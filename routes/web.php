@@ -12,9 +12,9 @@
 */
 use Illuminate\Routing\Router;
 //var_dump(session('chat_user'));
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 ////Route::get('/login', 'DocController@index');
 //
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

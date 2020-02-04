@@ -1,4 +1,3 @@
-hhhhhh
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title">{{ $form->title() }}</h3>
